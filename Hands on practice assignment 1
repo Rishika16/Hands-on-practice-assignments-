@@ -1,0 +1,59 @@
+#Hands On Exercise 1 
+
+#Start
+#Q 1- 1. Install a package - data.table and give a name of function starting character "d“Install and Load package -datasets. Use “women” data frame available in this package.
+#Find number of woman with height more than average but weight less than average. 
+
+#installing the required packages
+
+install.packages("data.table")
+install.packages("datasets")
+library("datasets")
+
+setwd("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA")
+
+#storing women data in dataframe women 
+
+women<-data.frame(women)
+
+#Finding the average weight and height of the women in the data frame 
+
+mean.height=mean(women$height)
+mean.weight=mean(women$weight)
+
+#finding the number of women whose height is greater than average and whose weight is less than the average
+#Storing in a new dataframe 
+women_df<-subset(women,height>mean.height & weight<mean.weight)
+
+#No such women in the existing database (No data available in table) 
+
+#End 
+
+#Q2 - Create a data frame of 15 Indian cities and their population size. You could refer cities and population from this page. http://www.worldatlas.com/articles/thebiggest-
+  cities-in-india.html
+
+#creating date frame of 15 Indian cities and their population sizes
+
+#installing required packages
+
+install.packages("rvest")
+library("rvest")
+install.packages("xml2")
+library("xml2")
+
+#getting data from the link 
+
+city_link="http://www.worldatlas.com/articles/the-biggest-cities-in-india.html"
+city_file= read_html(city_link)
+city_table=html_nodes(city_file,"table")
+
+#creating the data frame
+
+city_table_final<-html_table(city_table,fill=TRUE)
+View(city_table_final)
+city_data=as.data.frame(city_table_final)
+view(city_data)
+
+#End
+
+#End of Hands on Exercise 1
