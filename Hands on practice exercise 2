@@ -8,7 +8,7 @@ setwd("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA")
 #Question 1 
 
 #Reading the csv file 
-Infant_mortality_rates <- read_csv("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA/DP_LIVE_04092017135929457")
+Infant_mortality_rates <- read.csv("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA/DP_LIVE_04092017135929457")
 
 #removing the last variable 
 
@@ -30,20 +30,20 @@ library("xml2")
 #getting data from the link
 
 odi_matches_link="https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry"
-odi_matches_file= read_html(matches_link)
-odi_matches_table=html_nodes(matches_file,"table")
-odi_matches_table_final<-html_table(matches_table[2], fill= TRUE)
+odi_matches_file= read_html(odi_matches_link)
+odi_matches_table=html_nodes(odi_matches_file,"table")
+odi_matches_table_final<-html_table(odi_matches_table[2], fill= TRUE)
 View(odi_matches_table_final)
-odi_matches_data=as.data.frame(matches_table_final)
+odi_matches_data=as.data.frame(odi_matches_table_final)
 View(odi_matches_data)
 
 #calculating victories
 
-matches_data$total_wins=matches_data$Test+matches_data$ODI+matches_data$T20I
+odi_matches_data$total_wins=odi_matches_data$Test+odi_matches_data$ODI+odi_matches_data$T20I
 
 #calculating the wins by India 
 
-India_wins<-matches_data[3,5]
+India_wins<-odi_matches_data[3,5]
 View(India_wins)
 
 #Question 2 Ends
