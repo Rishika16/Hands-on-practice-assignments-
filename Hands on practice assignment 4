@@ -1,11 +1,4 @@
 # Exercise 4
-# Analysis of Student Performance in Math by downloading: https://archive.ics.uci.edu/ml/datasets/student+performance datasets, unzip to a folder on your system and read the data.
-#Q(1) Answer following questions
-#What is average Grades for Male and Female students
-#b) Which combination of Guardian and StudentGender has highest Grades for G1,G2 and G3
-#Q(2) Students Absences (variable: absences) can be broken into 4 or 5 groups each group has almost same % students (hint cut and quantile)
-#And then find average Grades for different level of absences
-#
 
 getwd()
 setwd("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA")
