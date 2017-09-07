@@ -12,7 +12,7 @@ library("datasets")
 
 setwd("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA")
 
-#storing women data in dataframe women 
+#storing relevant data in dataframe women 
 
 women<-data.frame(women)
 
@@ -21,7 +21,7 @@ women<-data.frame(women)
 mean.height=mean(women$height)
 mean.weight=mean(women$weight)
 
-#finding the number of women whose height is greater than average and whose weight is less than the average
+#finding the nos. of women whose height is greater than average and whose weight is less than the average
 #Storing in a new dataframe 
 women_df<-subset(women,height>mean.height & weight<mean.weight)
 
@@ -32,7 +32,7 @@ women_df<-subset(women,height>mean.height & weight<mean.weight)
 #Q2 - Create a data frame of 15 Indian cities and their population size. You could refer cities and population from this page. http://www.worldatlas.com/articles/thebiggest-
   cities-in-india.html
 
-#creating date frame of 15 Indian cities and their population sizes
+#creating date frame of 15 Indian cities and their respective population sizes
 
 #installing required packages
 
@@ -47,7 +47,7 @@ city_link="http://www.worldatlas.com/articles/the-biggest-cities-in-india.html"
 city_file= read_html(city_link)
 city_table=html_nodes(city_file,"table")
 
-#creating the data frame
+#creating city data frame
 
 city_table_final<-html_table(city_table,fill=TRUE)
 View(city_table_final)
