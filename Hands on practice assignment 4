@@ -10,14 +10,15 @@
 getwd()
 setwd("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA")
 
-data1=read.table("student-mat.csv",sep=";",header=TRUE)
-data2=read.table("student-por.csv",sep=";",header=TRUE)
+d1=read.table("student-mat.csv",sep=";",header=TRUE)
+d2=read.table("student-por.csv",sep=";",header=TRUE)
 
-data3=merge(d1,d2,by=c("school","sex","age","address","famsize","Pstatus","Medu","Fedu","Mjob","Fjob","reason","nursery","internet"))
+d3=merge(d1,d2,by=c("school","sex","age","address","famsize","Pstatus","Medu","Fedu","Mjob","Fjob","reason","nursery","internet"))
 print(nrow(d3)) 
-View(data1)
-View(data3)
-class(data3)
+
+View(d1)
+View(d3)
+class(d3)
 
 female_mean_grade=0
 male_mean_grade=0
