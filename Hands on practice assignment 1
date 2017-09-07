@@ -36,13 +36,13 @@ library("xml2")
 
 city_data="http://www.worldatlas.com/articles/the-biggest-cities-in-india.html"
 city_file= read_html(city_data)
-city_population=html_nodes(city_data,"table")
+city_population=html_nodes(city_file,"table")
 
 #creating city data frame
 
 city_population_final<-html_table(city_population,fill=TRUE)
 View(city_population_final)
-city_data=as.data.frame(city_table_final)
+city_data=as.data.frame(city_population_final)
 view(city_data)
 
 #End
