@@ -1,0 +1,139 @@
+#Q1
+
+getwd()
+setwd("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA")
+employee_CSV <- read.csv("employee.csv")
+Department_CSV <- read.csv("Department.csv")
+#,header= TRUE, sep= ";")
+
+# Merge employee and Department
+employee_Department_merged <- merge(employee_CSV,Department_CSV,by="DepartmentNO",all = TRUE)
+
+#Q2 
+
+# Average salary by geography #
+N_employeeLoc <- c(rep(0,nrow(Department)))
+salaryLoc <- c(rep(0,nrow(Department)))
+
+for (i1 in 1:nrow(Department))
+{
+  for (i2 in 1:nrow(employee_Department_merged))
+  {
+    if (!is.na(employee_Department_merged$LOC[i2]))
+    {  
+      if (employee_Department_merged$LOC[i2]==Department$LOC[i1])
+      {
+        N_employeeLoc[i1] <- N_employeeLoc[i1] +1
+        salaryLoc[i1] <- salaryLoc[i1] + employee_Department_merged$SAL[i2]
+      }
+    }    
+  }  
+}    
+
+mean_salary_loc <- c(rep(0,nrow(Department)))
+for (i3 in 1:nrow(Department))
+{
+  mean_salary_loc[i3] <- salaryLoc[i3]/N_employeeLoc[i3]
+}
+
+#Q3
+
+employee_IDS <- unique(employee_Department_merged$ID)
+countOfemployeeUnder <- rep(0,length(employee_IDS))
+
+for (i3 in 1:length(employee_IDS))
+{
+  if (!(is.na(employee_IDS[i3])))
+  {
+    for (i4 in 1:nrow(employee_Department_merged))
+    {
+      if (!(is.na(employee_Department_merged$MGR[i4])))
+      {
+        if (employee_Department_merged$MGR[i4]==employee_IDS[i3])
+        {
+          countOfemployeeUnder[i3] <- countOfemployeeUnder[i3] + 1
+        }  
+        
+      }  
+      
+    }
+  }  
+  
+}
+
+for (i5 in 1:length(employee_IDS))
+{
+  if (countOfemployeeUnder[i5]==max(countOfemployeeUnder))
+  {
+    position <- i5
+  }
+} 
+
+print("Manager with the highest number of employees")
+print(employee_Department_merged$ENAME[position])
+
+#Q4
+
+employee_csv.df<-read.csv("employee.csv",header=T)
+Department_csv.df<-read.csv("Department.csv",header=T)
+
+employee_Department_merged.df=merge(employee_csv.df,Department_csv.df,by=c("DepartmentNO"),all=TRUE)
+employee_Department_merged_hike.df <- employee_Department_merged.df
+
+for(i in 1:nrow(employee_Department_merged.df))
+{
+  if(!is.na(employee_Department_merged.df$JOB[i]))
+  {
+    if(employee_Department_merged.df$JOB[i]=="ANALYST")
+    {
+      employee_Department_merged_hike.df$SAL[i] = employee_Department_merged.df$SAL[i] + (0.15 * employee_Department_merged.df$SAL[i])
+    }
+  }
+}
+
+for(i in 1:nrow(employee_Department_merged.df))
+{
+  if(!is.na(employee_Department_merged.df$JOB[i]))
+  {
+    if(employee_Department_merged.df$JOB[i]=="CLERK")
+    {
+      employee_Department_merged_hike.df$SAL[i] = employee_Department_merged.df$SAL[i] + (0.125 * employee_Department_merged.df$SAL[i])
+    }
+  }
+}
+
+for(i in 1:nrow(employee_Department_merged.df))
+{
+  if(!is.na(employee_Department_merged.df$JOB[i]))
+  {
+    if(employee_Department_merged.df$JOB[i]=="MANAGER")
+    {
+      employee_Department_merged_hike.df$SAL[i] = employee_Department_merged.df$SAL[i] + (0.102 * employee_Department_merged.df$SAL[i])
+    }
+  }
+}
+
+for(i in 1:nrow(employee_Department_merged.df))
+{
+  if(!is.na(employee_Department_merged.df$JOB[i]))
+  {
+    if(employee_Department_merged.df$JOB[i]=="PRESIDENT")
+    {
+      employee_Department_merged_hike.df$SAL[i] = employee_Department_merged.df$SAL[i] + (0.057 * employee_Department_merged.df$SAL[i])
+    }
+  }
+}
+
+for(i in 1:nrow(employee_Department_merged.df))
+{
+  if(!is.na(employee_Department_merged.df$JOB[i]))
+  {
+    if(employee_Department_merged.df$JOB[i]=="SALESMAN")
+    {
+      employee_Department_merged_hike.df$SAL[i] = employee_Department_merged.df$SAL[i] + (0.133 * employee_Department_merged.df$SAL[i])
+    }
+  }
+}
+
+#Increased Salaries Dataframe
+View(employee_Department_merged_hike.df)
