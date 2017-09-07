@@ -1,8 +1,5 @@
 #Hands On Exercise 1 
 
-#Start
-#Q 1- 1. Install a package - data.table and give a name of function starting character "d“Install and Load package -datasets. Use “women” data frame available in this package.
-#Find number of woman with height more than average but weight less than average. 
 
 #installing the required packages
 
@@ -27,10 +24,6 @@ women_df<-subset(women,height>mean.height & weight<mean.weight)
 
 #No such women in the existing database (No data available in table) 
 
-#End 
-
-#Q2 - Create a data frame of 15 Indian cities and their population size. You could refer cities and population from this page. http://www.worldatlas.com/articles/thebiggest-
-  cities-in-india.html
 
 #creating date frame of 15 Indian cities and their respective population sizes
 
