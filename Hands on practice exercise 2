@@ -29,18 +29,15 @@ library("xml2")
 
 #getting data from the link
 
-matches_link="https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry"
-matches_file= read_html(matches_link)
-matches_table=html_nodes(matches_file,"table")
+odi_matches_link="https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry"
+odi_matches_file= read_html(matches_link)
+odi_matches_table=html_nodes(matches_file,"table")
+odi_matches_table_final<-html_table(matches_table[2], fill= TRUE)
+View(odi_matches_table_final)
+odi_matches_data=as.data.frame(matches_table_final)
+View(odi_matches_data)
 
-#Invoke the 2nd table
-
-matches_table_final<-html_table(matches_table[2], fill= TRUE)
-View(matches_table_final)
-matches_data=as.data.frame(matches_table_final)
-View(matches_data)
-
-#calculating total wins
+#calculating victories
 
 matches_data$total_wins=matches_data$Test+matches_data$ODI+matches_data$T20I
 
