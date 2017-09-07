@@ -1,28 +1,26 @@
 #Hands On Exercise 1 
 
 
-#installing the required packages
-
 install.packages("data.table")
 install.packages("datasets")
 library("datasets")
 
 setwd("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA")
 
-#storing relevant data in dataframe women 
+#storing relevant data in dataframe women_details
 
-women<-data.frame(women)
+women_details<-data.frame(women)
 
 #Finding the average weight and height of the women in the data frame 
 
-mean.height=mean(women$height)
-mean.weight=mean(women$weight)
+mean.height=mean(women_details$height)
+mean.weight=mean(women_details$weight)
 
 #finding the nos. of women whose height is greater than average and whose weight is less than the average
 #Storing in a new dataframe 
-women_df<-subset(women,height>mean.height & weight<mean.weight)
+women_df<-subset(women_details,height>mean.height & weight<mean.weight)
 
-#No such women in the existing database (No data available in table) 
+#No such women in the database (No data available in table) 
 
 
 #creating date frame of 15 Indian cities and their respective population sizes
@@ -36,14 +34,14 @@ library("xml2")
 
 #getting data from the link 
 
-city_link="http://www.worldatlas.com/articles/the-biggest-cities-in-india.html"
-city_file= read_html(city_link)
-city_table=html_nodes(city_file,"table")
+city_data="http://www.worldatlas.com/articles/the-biggest-cities-in-india.html"
+city_file= read_html(city_data)
+city_population=html_nodes(city_data,"table")
 
 #creating city data frame
 
-city_table_final<-html_table(city_table,fill=TRUE)
-View(city_table_final)
+city_population_final<-html_table(city_population,fill=TRUE)
+View(city_population_final)
 city_data=as.data.frame(city_table_final)
 view(city_data)
 
