@@ -2,8 +2,8 @@
 
 getwd()
 setwd("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA")
-employee_CSV <- read.csv("employee.csv")
-Department_CSV <- read.csv("Department.csv")
+employee_CSV <- read.csv("emp.csv")
+Department_CSV <- read.csv("Dept.csv")
 #,header= TRUE, sep= ";")
 
 # Merge employee and Department
