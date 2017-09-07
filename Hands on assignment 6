@@ -1,17 +1,18 @@
-install.packages("rvest")
-library(rvest)
-getwd()
-setwd("C:/Users/rishika.sharma/Documents/MICA- Term 4/AMMA")
+library("xml2")
+library("rvest")
+link = "http://stats.espncricinfo.com/ci/content/records/284248.html"
+file=read_html(link)
+table_scores_scores=html_nodes(file,"table_scores")
+table_scores_final<-html_table_scores(table_scores[1],fill=TRUE)
+View(table_scores_final)
+class(table_scores_final)
+table_scores.df <- as.data.frame(table_scores_final)
 
-India_Pakistan <- "https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry"
-file <- read_html(India_Pakistan)
-tables <- html_nodes(file, "table")
-table_1 <- html_table(tables[7], fill = TRUE)
-View(table_1)
-DF1 <- as.data.frame(table_1)
-View(DF1)
-DF1$Tests
-Top_Five_Scorers<-c(table.df$Player[1], table.df$Player[2], table.df$Player[3], table.df$Player[4], table.df$Player[5])
+table_scores.df[with(table_scores.df, order(Runs, Player)), ]
+
+View(table_scores.df)
+
+Top_Five_Scorers<-c(table_scores.df$Player[1], table_scores.df$Player[2], table_scores.df$Player[3], table_scores.df$Player[4], table_scores.df$Player[5])
 Top_Five_Scorers
 
 ## Top Five Scorers End
@@ -24,52 +25,52 @@ ENG=0
 WI=0
 SA=0
 
-for(i in 1:length(table.df$Player))
+for(i in 1:length(table_scores.df$Player))
 {
-  if(grepl("PAK",table.df$Player[i]))
+  if(grepl("PAK",table_scores.df$Player[i]))
     PAK=PAK+1
 }
 
 PAK
 
-for(i in 1:length(table.df$Player))
+for(i in 1:length(table_scores.df$Player))
 {
-  if(grepl("AUS",table.df$Player[i]))
+  if(grepl("AUS",table_scores.df$Player[i]))
     AUS=AUS+1
 }
 
 AUS
-for(i in 1:length(table.df$Player))
+for(i in 1:length(table_scores.df$Player))
 {
-  if(grepl("INDIA",table.df$Player[i]))
+  if(grepl("INDIA",table_scores.df$Player[i]))
     IND=IND+1
 }
 
 IND
-for(i in 1:length(table.df$Player))
+for(i in 1:length(table_scores.df$Player))
 {
-  if(grepl("SL",table.df$Player[i]))
+  if(grepl("SL",table_scores.df$Player[i]))
     SL=SL+1
 }
 
 SL
-for(i in 1:length(table.df$Player))
+for(i in 1:length(table_scores.df$Player))
 {
-  if(grepl("ENG",table.df$Player[i]))
+  if(grepl("ENG",table_scores.df$Player[i]))
     ENG=ENG+1
 }
 
 ENG
-for(i in 1:length(table.df$Player))
+for(i in 1:length(table_scores.df$Player))
 {
-  if(grepl("WI",table.df$Player[i]))
+  if(grepl("WI",table_scores.df$Player[i]))
     WI=WI+1
 }
 
 WI
-for(i in 1:length(table.df$Player))
+for(i in 1:length(table_scores.df$Player))
 {
-  if(grepl("SA",table.df$Player[i]))
+  if(grepl("SA",table_scores.df$Player[i]))
     SA=SA+1
 }
 
